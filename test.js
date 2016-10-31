@@ -2,8 +2,6 @@ const DoubleChecker = require('./index');
 
 let dc = new DoubleChecker({
   dataType: 'json',
-  numUseSources: 3,
-  numBackupSources: 1,
   ignoreJSONKeys: ['requestProcessingTime'],
   sources: [
     {

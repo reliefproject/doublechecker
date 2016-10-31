@@ -6,12 +6,6 @@ class DoubleChecker {
     this.dataType = ['string', 'json'].indexOf(params.dataType) !== -1
       ? params.dataType
       : 'string';
-    this.numUseSources = params.numUseSources
-      ? params.numUseSources
-      : 2;
-    this.numBackupSources = params.numBackupSources
-      ? params.numBackupSources
-      : 1;
     this.ignoreJSONKeys = params.ignoreJSONKeys instanceof Array
       ? params.ignoreJSONKeys
       : [];
@@ -29,8 +23,6 @@ class DoubleChecker {
     let req = new Request({
       params: {
         dataType: this.dataType,
-        numUseSources: this.numUseSources,
-        numBackupSources: this.numBackupSources,
         ignoreJSONKeys: this.ignoreJSONKeys,
         callback: callback,
       },
