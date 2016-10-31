@@ -6,14 +6,28 @@ let dc = new DoubleChecker({
   ignoreJSONKeys: ['id'],
   sources: [
     {
+      transport: 'tls',
+      host: 'electrum.mindspot.org',
+      port: 50002,
+      tls: {
+        rejectUnauthorized: false,
+      },
+    },
+    {
       transport: 'tcp',
       host: 'electrum.online',
       port: 50001,
+      tls: {},
     },
     {
       transport: 'tcp',
       host: 'electrum.jdubya.info',
       port: 50001,
+    },
+    {
+      transport: 'tcp',
+      host: 'vps.hsmiths.com',
+      port: 8080,
     },
 /*    {
       transport: 'http',
@@ -68,8 +82,8 @@ dc.request('{"id": 1, "method":"blockchain.address.get_history", "params":["1NS1
   console.log('Score ', data.score);
 });
 
-
-setTimeout(function() {
+/*
+SetTimeout(function() {
   dc.request('{"id": 1, "method":"server.version", "params":[] }\n', function(err, data) {
     if (err) {
       return console.log(err);
@@ -79,3 +93,4 @@ setTimeout(function() {
     console.log('Score ', data.score);
   });
 }, 5000);
+*/
