@@ -1,7 +1,7 @@
 const DoubleChecker = require('./index');
 
 let dc = new DoubleChecker({
-  numUseSources: 2,
+  numUseSources: 3,
   dataType: 'json',
   ignoreJSONKeys: ['requestProcessingTime', 'confirmations'],
   //IgnoreJSONKeys: ['id'],
@@ -35,7 +35,7 @@ let dc = new DoubleChecker({
     },*/
     {
       transport: 'http',
-      host: '23.94.134.161',
+      host: 'asdf23.94.134.161',
       port: 7876,
       path: '/nxt',
       method: 'POST',
@@ -104,8 +104,8 @@ dc.request({ requestType: 'getDGSGoods', firstIndex: 100, lastIndex: 125 }, func
   console.log('Duration ms ', data.duration);
 });
 
-/*
-SetTimeout(function() {
+
+setTimeout(function() {
   dc.request('{"id": 1, "method":"server.version", "params":[] }\n', function(err, data) {
     if (err) {
       return console.log(err);
@@ -115,4 +115,3 @@ SetTimeout(function() {
     console.log('Score ', data.score);
   });
 }, 5000);
-*/
