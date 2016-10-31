@@ -2,10 +2,10 @@ const DoubleChecker = require('./index');
 
 let dc = new DoubleChecker({
   dataType: 'json',
-  //IgnoreJSONKeys: ['requestProcessingTime', 'confirmations'],
-  ignoreJSONKeys: ['id'],
+  ignoreJSONKeys: ['requestProcessingTime', 'confirmations'],
+  //IgnoreJSONKeys: ['id'],
   sources: [
-    {
+    /*{
       transport: 'tls',
       host: 'electrum.mindspot.org',
       port: 50002,
@@ -31,8 +31,8 @@ let dc = new DoubleChecker({
       transport: 'tcp',
       host: 'vps.hsmiths.com',
       port: 8080,
-    },
-    /*{
+    },*//*
+    {
       transport: 'http',
       host: '23.94.134.161',
       port: 7876,
@@ -41,6 +41,7 @@ let dc = new DoubleChecker({
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      timeout: 1000,
     },
     {
       transport: 'http',
@@ -71,7 +72,7 @@ let dc = new DoubleChecker({
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-    },
+    },*/
     {
       transport: 'https',
       host: 'nxt01.lndyn.com',
@@ -84,7 +85,8 @@ let dc = new DoubleChecker({
       tls: {
         rejectUnauthorized: false,
       },
-    },*/
+      timeout: 1000,
+    },
   ],
 });
 
