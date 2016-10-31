@@ -2,34 +2,37 @@ const DoubleChecker = require('./index');
 
 let dc = new DoubleChecker({
   dataType: 'json',
-  ignoreJSONKeys: ['requestProcessingTime', 'confirmations'],
-  //IgnoreJSONKeys: ['id'],
+  //IgnoreJSONKeys: ['requestProcessingTime', 'confirmations'],
+  ignoreJSONKeys: ['id'],
   sources: [
-  /*  {
+    {
       transport: 'tls',
       host: 'electrum.mindspot.org',
       port: 50002,
       tls: {
         rejectUnauthorized: false,
       },
+      timeout: 1000,
     },
     {
       transport: 'tcp',
       host: 'electrum.online',
       port: 50001,
+      timeout: 2000,
       tls: {},
     },
     {
       transport: 'tcp',
       host: 'electrum.jdubya.info',
       port: 50001,
+      timeout: 2000,
     },
     {
       transport: 'tcp',
       host: 'vps.hsmiths.com',
       port: 8080,
-    },*/
-    {
+    },
+    /*{
       transport: 'http',
       host: '23.94.134.161',
       port: 7876,
@@ -81,14 +84,14 @@ let dc = new DoubleChecker({
       tls: {
         rejectUnauthorized: false,
       },
-    },
+    },*/
   ],
 });
 
 //Dc.request({ requestType: 'getAccount', account: 'NXT-8SWM-2224-YKWW-22222' }, function(err, data) {
 //dc.request({ requestType: 'getBlocks', firstIndex: 0, lastIndex: 10, includeTransactions: false }, function(err, data) {
-dc.request({ requestType: 'getDGSGoods', firstIndex: 100, lastIndex: 125 }, function(err, data) {
-  //Dc.request('{"id": 1, "method":"blockchain.address.get_history", "params":["1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L"] }\n', function(err, data) {
+//dc.request({ requestType: 'getDGSGoods', firstIndex: 100, lastIndex: 125 }, function(err, data) {
+dc.request('{"id": 1, "method":"blockchain.address.get_history", "params":["1XPTgDRhN8RFnzniWCddobD9iKZatrvH4"] }', function(err, data) {
   if (err) {
     return console.log(err);
   }
