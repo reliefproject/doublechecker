@@ -2,7 +2,7 @@ const DoubleChecker = require('./index');
 
 let dc = new DoubleChecker({
   dataType: 'json',
-  IgnoreJSONKeys: ['requestProcessingTime'],
+  ignoreJSONKeys: ['requestProcessingTime', 'confirmations'],
   //IgnoreJSONKeys: ['id'],
   sources: [
   /*  {
@@ -29,7 +29,7 @@ let dc = new DoubleChecker({
       host: 'vps.hsmiths.com',
       port: 8080,
     },*/
-/*    {
+    {
       transport: 'http',
       host: '23.94.134.161',
       port: 7876,
@@ -68,7 +68,7 @@ let dc = new DoubleChecker({
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      */
+    },
     {
       transport: 'https',
       host: 'nxt01.lndyn.com',
@@ -85,7 +85,9 @@ let dc = new DoubleChecker({
   ],
 });
 
-dc.request({ requestType: 'getAccount', account: 'NXT-8SWM-2224-YKWW-22222' }, function(err, data) {
+//Dc.request({ requestType: 'getAccount', account: 'NXT-8SWM-2224-YKWW-22222' }, function(err, data) {
+//dc.request({ requestType: 'getBlocks', firstIndex: 0, lastIndex: 10, includeTransactions: false }, function(err, data) {
+dc.request({ requestType: 'getDGSGoods', firstIndex: 100, lastIndex: 125 }, function(err, data) {
   //Dc.request('{"id": 1, "method":"blockchain.address.get_history", "params":["1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L"] }\n', function(err, data) {
   if (err) {
     return console.log(err);
@@ -93,6 +95,7 @@ dc.request({ requestType: 'getAccount', account: 'NXT-8SWM-2224-YKWW-22222' }, f
   console.log(data)
   console.log('Freq ', data.frequency);
   console.log('Score ', data.score);
+  console.log('Duration ms ', data.duration);
 });
 
 /*

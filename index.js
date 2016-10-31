@@ -20,11 +20,14 @@ class DoubleChecker {
         new Error('Callback not specified')
       );
     }
+    const now = new Date();
+    const startTime = now.getTime();
     let req = new Request({
       params: {
         dataType: this.dataType,
         ignoreJSONKeys: this.ignoreJSONKeys,
         callback: callback,
+        startTime: startTime,
       },
       sources: this.sources,
       data: data,
