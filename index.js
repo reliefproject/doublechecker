@@ -1,31 +1,41 @@
 const Request = require('./lib/request')
 
-class DoubleChecker() {
+class DoubleChecker {
 
   constructor(params) {
-    // Set servers
-    // Set required score (3/4, 2/3 etc)
-    // Simply check params for validity
-    // and keep them for other objects
-    /**
-      params.server.transport
-      params.server.host
-      (params.transport.timeout)
-      params.response.minScore
-      params.response.ignoreKeys
-    */
+    this.dataType = ['string', 'json'].indexOf(params.dataType) !== -1
+      ? params.dataType
+      : 'string';
+    this.numUseSources = params.numUseSources
+      ? params.numUseSources
+      : 2;
+    this.numBackupSources = params.numBackupSources
+      ? params.numBackupSources
+      : 1;
+    this.ignoreJSONKeys = params.ignoreJSONKeys instanceof Array
+      ? params.ignoreJSONKeys
+      : [];
+    this.sources = params.sources instanceof Array
+      ? params.sources
+      : [];
   };
 
   request(data, callback) {
-    // Get requests
-    // Create request instances
+    if (typeof callback !== 'function') {
+      return console.log(
+        new Error('Callback not specified')
+      );
+    }
     let req = new Request({
-      /*
-      servers: params.servers,
-      params: params.response
+      params: {
+        dataType: this.dataType,
+        numUseSources: this.numUseSources,
+        numBackupSources: this.numBackupSources,
+        ignoreJSONKeys: this.ignoreJSONKeys,
+        callback: callback,
+      },
+      sources: this.sources,
       data: data,
-      callback: callback
-      */
     });
     req.execute();
   };
