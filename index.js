@@ -1,6 +1,8 @@
 const SourceManager = require('./lib/source_manager')
 const Request = require('./lib/request')
 
+let self;
+
 class DoubleChecker {
 
   constructor(params) {
@@ -17,6 +19,7 @@ class DoubleChecker {
       ? params.sources
       : [];
     this.sourceManager = new SourceManager(this.sources);
+    self = this;
   };
 
   request(data, callback) {
@@ -29,13 +32,13 @@ class DoubleChecker {
     const startTime = now.getTime();
     let req = new Request({
       params: {
-        dataType: this.dataType,
-        ignoreJSONKeys: this.ignoreJSONKeys,
+        dataType: self.dataType,
+        ignoreJSONKeys: self.ignoreJSONKeys,
         callback: callback,
         startTime: startTime,
       },
-      sources: this.sourceManager.selectSources(this.numUseSources),
-      sourceManager: this.sourceManager,
+      sources: self.sourceManager.selectSources(self.numUseSources),
+      sourceManager: self.sourceManager,
       data: data,
     });
     req.execute();
