@@ -40,7 +40,7 @@ describe('response (strings)', function() {
       callback: function(err, data) {
         assert.equal(err, null);
         assert.equal(data.score, 1);
-        assert.equal(data.data, '{"hello":"world"}');
+        assert.deepEqual(data.data, {hello: 'world'});
         done();
       },
     });
@@ -56,7 +56,7 @@ describe('response (strings)', function() {
       callback: function(err, data) {
         assert.equal(err, null);
         assert(data.score >= 0.66);
-        assert.equal(data.data, '{"hello":"world"}');
+        assert.deepEqual(data.data, {hello: 'world'});
         done();
       },
     });
@@ -73,7 +73,7 @@ describe('response (strings)', function() {
       callback: function(err, data) {
         assert.equal(err, null);
         assert.equal(data.score, 1);
-        assert.equal(data.data, '{"hello":"world"}');
+        assert.deepEqual(data.data, {hello: 'world'});
         done();
       },
     });
@@ -89,7 +89,7 @@ describe('response (strings)', function() {
       callback: function(err, data) {
         assert.equal(err, null);
         assert(data.score >= 0.66);
-        assert.equal(data.data, '{"hello":"world"}');
+        assert.deepEqual(data.data, {hello: 'world'});
         done();
       },
     });
