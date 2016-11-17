@@ -1,7 +1,7 @@
-const DoubleChecker = (function() {
+const DoubleChecker = (() =>   {
 
-  const SourceManager = require('./lib/source_manager')
-  const Request = require('./lib/request')
+  const SourceManager = require('./lib/source_manager');
+  const Request = require('./lib/request');
 
   class DoubleChecker {
 

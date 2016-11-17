@@ -1,11 +1,11 @@
 const assert = require('assert');
 const Response = require('../lib/response');
 
-describe('response (strings)', function() {
-  it('matches all', function(done) {
+describe('response (strings)', () => {
+  it('matches all', done => {
     let res = new Response({
       dataType: 'string',
-      callback: function(err, data) {
+      callback: (err, data) => {
         assert.equal(err, null);
         assert.equal(data.score, 1);
         assert.equal(data.data, 'myteststring');
@@ -18,10 +18,10 @@ describe('response (strings)', function() {
       { err: null, data: 'myteststring' },
     ]);
   });
-  it('two of three', function(done) {
+  it('two of three', done => {
     let res = new Response({
       dataType: 'string',
-      callback: function(err, data) {
+      callback: (err, data) => {
         assert.equal(err, null);
         assert(data.score >= 0.66);
         assert.equal(data.data, 'myteststring');
@@ -34,10 +34,10 @@ describe('response (strings)', function() {
       { err: null, data: 'myteststring' },
     ]);
   });
-  it('json matches all', function(done) {
+  it('json matches all', done => {
     let res = new Response({
       dataType: 'json',
-      callback: function(err, data) {
+      callback: (err, data) => {
         assert.equal(err, null);
         assert.equal(data.score, 1);
         assert.deepEqual(data.data, {hello: 'world'});
@@ -50,10 +50,10 @@ describe('response (strings)', function() {
       { err: null, data: '{"hello":"world"}' },
     ]);
   });
-  it('json partially invalid', function(done) {
+  it('json partially invalid', done => {
     let res = new Response({
       dataType: 'json',
-      callback: function(err, data) {
+      callback: (err, data) => {
         assert.equal(err, null);
         assert(data.score >= 0.66);
         assert.deepEqual(data.data, {hello: 'world'});
@@ -66,11 +66,11 @@ describe('response (strings)', function() {
       { err: null, data: '{"hello":"world"}' },
     ]);
   });
-  it('json ignore key', function(done) {
+  it('json ignore key', (done) => {
     let res = new Response({
       dataType: 'json',
       ignoreJSONKeys: ['ignoreMe'],
-      callback: function(err, data) {
+      callback: (err, data) => {
         assert.equal(err, null);
         assert.equal(data.score, 1);
         assert.deepEqual(data.data, {hello: 'world'});
@@ -83,10 +83,10 @@ describe('response (strings)', function() {
       { err: null, data: '{"hello":"world","ignoreMe":"three"}' },
     ]);
   });
-  it('one error', function(done) {
+  it('one error', done => {
     let res = new Response({
       dataType: 'json',
-      callback: function(err, data) {
+      callback: (err, data) => {
         assert.equal(err, null);
         assert(data.score >= 0.66);
         assert.deepEqual(data.data, {hello: 'world'});
